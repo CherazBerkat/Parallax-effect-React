@@ -1,7 +1,5 @@
-// import desertMoon from "../assets/About-Images/desert-moon.png";
 import desertNoSky from "../assets/About-Images/desert-NoSky.png";
 import desertRock from "../assets/About-Images/desert-rock.png";
-// import desertSky from "../assets/About-Images/desert-sky.png";
 import desert from "../assets/About-Images/desert.png";
 import grass from "../assets/About-Images/grass.png";
 import man from "../assets/About-Images/man.png";
@@ -18,6 +16,7 @@ import sky from "../assets/Home-Images/sky.png";
 import train from "../assets/Home-Images/train.png";
 import waterCity from "../assets/Home-Images/water.png";
 import { Parallax, ParallaxLayer } from "@react-spring/Parallax";
+import NavBar from "./NavBar.jsx";
 import ProductCard from "./ProductCard.jsx";
 import Salmon from "../assets/products/Salmon.png";
 import Snapper from "../assets/products/Snapper.png";
@@ -27,10 +26,18 @@ import Swordfish from "../assets/products/Swordfish.png";
 export default function Page() {
   return (
     <Parallax pages={3.5}>
-      <ParallaxLayer offset={0}>
-        <img src={sky} alt="sky" className="w-[150%] fixed top-[-30%]" />
+      <ParallaxLayer offset={0} sticky={{ start: 0, end: 3 }}>
+        <NavBar />
       </ParallaxLayer>
-      <ParallaxLayer offset={0} sticky={{ start: 0, end: 1.55 }}>
+      <ParallaxLayer offset={0}>
+        <img
+          src={sky}
+          alt="sky"
+          className="w-[150%] fixed top-[-30%]"
+          id="home"
+        />
+      </ParallaxLayer>
+      <ParallaxLayer offset={0}>
         <img
           src={moonCity}
           alt="moonCity"
@@ -99,6 +106,7 @@ export default function Page() {
           src={desert}
           alt="desert"
           className="w-[90%] fixed top-[20%] left-0"
+          id="about"
         />
       </ParallaxLayer>
       <ParallaxLayer offset={1}>
@@ -142,10 +150,11 @@ export default function Page() {
         style={{
           backgroundColor: "#121137",
           display: "flex",
-          justifyContent: "center",
+          flexDirection: "row",
+          justifyContent: "space-around",
           alignItems: "center",
-          gap: "8",
         }}
+        id="prds"
       >
         <ProductCard
           img={Salmon}
